@@ -291,7 +291,54 @@
             <path d="M0,50 Q300,100 600,50 T1200,50 L1200,0 L0,0 Z" fill="currentColor"></path>
         </svg>
     </section>
-    
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Get in Touch</h2>
+                <p>Have questions? We'd love to hear from you</p>
+            </div>
+
+            <form class="contact-form" action="process_contact.php" method="POST" data-aos="fade-up" data-aos-delay="100">
+                <div class="form-group">
+                    <input 
+                        type="text" 
+                        name="name" 
+                        placeholder="Your Name" 
+                        required
+                        class="form-input"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <input 
+                        type="email" 
+                        name="email" 
+                        placeholder="Your Email" 
+                        required
+                        class="form-input"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <textarea 
+                        name="message" 
+                        placeholder="Your Message" 
+                        rows="6" 
+                        required
+                        class="form-input"
+                    ></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary-large">
+                    <span>Send Message</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+
 <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
