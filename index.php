@@ -60,5 +60,43 @@
             </div>
         </div>
     </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="800">
+                <h1 class="hero-title">The Last POS System You'll Ever Need</h1>
+                <p class="hero-subtitle">Modern, intuitive, and powerful. Streamline your retail operations with cutting-edge technology.</p>
+                
+                <div class="hero-ctas" data-aos="fade-up" data-aos-delay="200">
+                    <button class="btn btn-primary-large">
+                        <span>Start Free Trial</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="btn btn-secondary-large">
+                        <i class="fas fa-play-circle"></i>
+                        <span>Watch Demo</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="hero-visual" data-aos="fade-left" data-aos-delay="300">
+                <div class="floating-shapes">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                    <div class="shape shape-3"></div>
+                </div>
+                <div class="hero-mockup" data-tilt>
+                    <img src="assets/images/pos-dashboard.jpg" alt="POS Dashboard Mockup" class="mockup-image">
+                </div>
+            </div>
+        </div>
+
+        <!-- SVG Wave Divider -->
+        <svg class="wave-divider" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,50 Q300,0 600,50 T1200,50 L1200,120 L0,120 Z" fill="currentColor"></path>
+        </svg>
+    </section>
+    
 </body>
 </html>
