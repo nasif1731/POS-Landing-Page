@@ -97,6 +97,125 @@
             <path d="M0,50 Q300,0 600,50 T1200,50 L1200,120 L0,120 Z" fill="currentColor"></path>
         </svg>
     </section>
+
+    <!-- Logo Marquee Section -->
+    <section class="marquee-section">
+        <h3>Trusted by Leading Businesses</h3>
+        <div class="marquee-container">
+            <div class="marquee">
+                <div class="marquee-content">
+                    <div class="logo-item"><i class="fas fa-store"></i> RetailCo</div>
+                    <div class="logo-item"><i class="fas fa-shopping-bag"></i> ShopHub</div>
+                    <div class="logo-item"><i class="fas fa-utensils"></i> FoodChain</div>
+                    <div class="logo-item"><i class="fas fa-coffee"></i> CafePro</div>
+                    <div class="logo-item"><i class="fas fa-prescription-bottle"></i> PharmaTech</div>
+                    <div class="logo-item"><i class="fas fa-store"></i> RetailCo</div>
+                    <div class="logo-item"><i class="fas fa-shopping-bag"></i> ShopHub</div>
+                    <div class="logo-item"><i class="fas fa-utensils"></i> FoodChain</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SVG Wave Divider -->
+        <svg class="wave-divider wave-reverse" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,50 Q300,100 600,50 T1200,50 L1200,0 L0,0 Z" fill="currentColor"></path>
+        </svg>
+    </section>
+
+    <!-- Bento Grid Features Section -->
+    <section class="features" id="features">
+        <div class="features-container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Powerful Features Built for You</h2>
+                <p>Everything you need to run your business efficiently</p>
+            </div>
+
+            <div class="bento-grid">
+                <!-- Feature 1 -->
+                <div class="bento-item bento-lg" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bento-card">
+                        <div class="bento-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h3>Lightning Fast</h3>
+                        <p>Process transactions in milliseconds. Zero lag, zero downtime.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bento-item" data-aos="fade-up" data-aos-delay="150">
+                    <div class="bento-card">
+                        <div class="bento-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Bank-Level Security</h3>
+                        <p>Encrypted transactions with PCI-DSS compliance.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bento-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bento-card">
+                        <div class="bento-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Real-Time Analytics</h3>
+                        <p>Track sales, inventory, and revenue in real-time.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bento-item bento-tall" data-aos="fade-up" data-aos-delay="250">
+                    <div class="bento-card">
+                        <div class="bento-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Mobile Ready</h3>
+                        <p>Full-featured mobile app for on-the-go management.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="bento-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bento-card">
+                        <div class="bento-icon">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <h3>Multi-Location</h3>
+                        <p>Manage multiple stores from one dashboard.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="bento-item" data-aos="fade-up" data-aos-delay="350">
+                    <div class="bento-card">
+                        <div class="bento-icon">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <h3>Easy Integration</h3>
+                        <p>Connect with your favorite business tools effortlessly.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 7 (Tall) -->
+                <div class="bento-item bento-tall bento-lg" data-aos="fade-up" data-aos-delay="400">
+                    <div class="bento-card">
+                        <div class="bento-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>24/7 Support</h3>
+                        <p>Expert support team always ready to help you succeed.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SVG Wave Divider -->
+        <svg class="wave-divider" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,50 Q300,0 600,50 T1200,50 L1200,120 L0,120 Z" fill="currentColor"></path>
+        </svg>
+    </section>
+    
 <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
