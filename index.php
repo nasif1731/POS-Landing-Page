@@ -339,7 +339,36 @@
         </div>
     </section>
 
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <h2 class="footer-logo">Sleek<span>POS</span></h2>
+      <p>Empowering businesses with smart, modern POS solutions.</p>
+    </div>
+
+    <div class="footer-socials">
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="mailto:info@sleekpos.com"><i class="fas fa-envelope"></i></a>
+    </div>
+
+    <div class="footer-links">
+      <a href="index.php">Home</a>
+      <a href="index.php#features">Features</a>
+      <a href="index.php#pricing">Pricing</a>
+      <a href="index.php#contact">Contact</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+
+    <p class="footer-copy">&copy; <span id="year"></span> SleekPOS. All rights reserved.</p>
+  </div>
+</footer>
+
+    
 <!-- Scripts -->
+    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
     <script src="assets/js/main.js"></script>
