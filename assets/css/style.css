@@ -1265,7 +1265,7 @@ body.dark-mode .footer-copy {
 .global-theme-toggle {
   position: relative;
   top: 0.15px;
-  right: 5px;
+  right: 0px;
   z-index: 9999;
   display: flex;
   align-items: center;
