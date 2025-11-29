@@ -1,175 +1,198 @@
-// Wait for DOM to load
 document.addEventListener("DOMContentLoaded", () => {
-  // ---------------------------
-  // Initialize AOS
-  // ---------------------------
-  if (window.AOS) {
+  initNavbar()
+  initScrollAnimations()
+  initParallax()
+  initFormHandling()
+  initHamburgerMenu()
+  initMarquee()
+  initThemeToggle()
+})
+
+/**
+ * Initialize navbar scroll effect
+ */
+function initNavbar() {
+  const navbar = document.querySelector(".navbar")
+  let lastScrollY = 0
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      const scrollY = window.scrollY
+
+      if (scrollY > 50) {
+        navbar.classList.add("scrolled")
+      } else {
+        navbar.classList.remove("scrolled")
+      }
+
+      // Hide navbar on scroll down, show on scroll up
+      if (scrollY > lastScrollY && scrollY > 300) {
+        navbar.style.transform = "translateY(-100%)"
+      } else {
+        navbar.style.transform = "translateY(0)"
+      }
+
+      lastScrollY = scrollY
+    },
+    { passive: true },
+  )
+}
+
+/**
+ * Initialize scroll animations with AOS
+ */
+function initScrollAnimations() {
+  const AOS = window.AOS // Declare the AOS variable
+  if (typeof AOS !== "undefined") {
     AOS.init({
       duration: 800,
-      easing: "ease-in-out",
-      once: true,
+      easing: "ease-out-cubic",
+      once: false,
       offset: 100,
-    });
+      disable: window.innerWidth < 640 ? "mobile" : false,
+    })
   }
+}
 
-  // ---------------------------
-  // Initialize VanillaTilt
-  // ---------------------------
-  const heroMockup = document.querySelector(".hero-mockup");
-  if (heroMockup && window.VanillaTilt) {
-    VanillaTilt.init(heroMockup, {
-      max: 15,
-      scale: 1.05,
-      speed: 400,
-      transition: true,
-    });
+/**
+ * Initialize parallax effect on hero mockup
+ */
+function initParallax() {
+  const heroMockup = document.querySelector(".hero-mockup")
+
+  if (heroMockup) {
+    document.addEventListener("mousemove", (e) => {
+      const { clientX, clientY } = e
+      const centerX = window.innerWidth / 2
+      const centerY = window.innerHeight / 2
+
+      const rotateX = (clientY - centerY) * 0.02
+      const rotateY = (clientX - centerX) * 0.02
+
+      heroMockup.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) perspective(1000px)`
+    })
+
+    // Reset on mouse leave
+    document.addEventListener("mouseleave", () => {
+      heroMockup.style.transform = "rotateX(0) rotateY(0)"
+    })
   }
+}
 
-  document.querySelectorAll(".pricing-card").forEach((card) => {
-    if (window.VanillaTilt) {
-      VanillaTilt.init(card, {
-        max: 10,
-        scale: 1.02,
-        speed: 400,
-      });
-    }
-  });
+/**
+ * Initialize form handling with validation
+ */
+function initFormHandling() {
+  const form = document.querySelector(".contact-form")
 
-  // ---------------------------
-  // Smooth scroll for anchor links
-  // ---------------------------
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute("href"));
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    });
-  });
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault()
 
-  // ---------------------------
-  // Mobile menu toggle
-  // ---------------------------
-  const hamburger = document.querySelector(".hamburger");
-  const navMenu = document.querySelector(".nav-menu");
+      const formData = new FormData(form)
+
+      fetch(form.action, {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success && data.redirect) {
+            window.location.href = data.redirect
+          } else if (data.errors) {
+            alert(data.errors.join("\n"))
+          } else {
+            alert("Unexpected response from server.")
+          }
+        })
+        .catch(() => {
+          alert("Server error. Please try again.")
+        })
+    })
+  }
+}
+
+
+/**
+ * Initialize mobile hamburger menu
+ */
+function initHamburgerMenu() {
+  const hamburger = document.querySelector(".hamburger")
+  const navMenu = document.querySelector(".nav-menu")
+  const navLinks = document.querySelectorAll(".nav-menu a")
 
   if (hamburger && navMenu) {
     hamburger.addEventListener("click", () => {
-      navMenu.style.display =
-        navMenu.style.display === "flex" ? "none" : "flex";
-    });
+      hamburger.classList.toggle("active")
+      navMenu.classList.toggle("active")
+    })
+
+    // Close menu when a link is clicked
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        hamburger.classList.remove("active")
+        navMenu.classList.remove("active")
+      })
+    })
+  }
+}
+
+/**
+ * Initialize marquee auto-scroll
+ */
+function initMarquee() {
+  const marquee = document.querySelector(".marquee")
+
+  if (marquee) {
+    // Clone marquee content for seamless loop
+    const content = marquee.querySelector(".marquee-content")
+    if (content) {
+      const clone = content.cloneNode(true)
+      marquee.appendChild(clone)
+    }
+  }
+}
+
+/* Added theme toggle functionality */
+function initThemeToggle() {
+  const themeToggle = document.getElementById("theme-toggle")
+  const themeLabel = document.getElementById("theme-label")
+  const html = document.documentElement
+
+  // Check for saved theme preference or default to light mode
+  const savedTheme = localStorage.getItem("theme") || "light"
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark-mode")
+    themeToggle.classList.add("active")
+    themeLabel.textContent = "Dark Mode"
+    html.style.colorScheme = "dark"
+  } else {
+    html.style.colorScheme = "light"
   }
 
-  // ---------------------------
-  // Contact form handling
-  // ---------------------------
-  const contactForm = document.querySelector(".contact-form");
+  // Toggle theme on button click
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode")
+    themeToggle.classList.toggle("active")
 
-  if (contactForm) {
-    contactForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
+    const isDarkMode = document.body.classList.contains("dark-mode")
+    localStorage.setItem("theme", isDarkMode ? "dark" : "light")
+    themeLabel.textContent = isDarkMode ? "Dark Mode" : "Light Mode"
+    html.style.colorScheme = isDarkMode ? "dark" : "light"
+  })
+}
 
-      const formData = new FormData(contactForm);
-
-      try {
-        const response = await fetch("process_contact.php", {
-          method: "POST",
-          body: formData,
-        });
-
-        const data = await response.json();
-
-        if (data.success) {
-          window.location.href = "thank-you.html";
-        } else if (data.errors) {
-          alert("Please fix the following errors:\n" + data.errors.join("\n"));
-        }
-      } catch (error) {
-        console.error("Error:", error);
-        alert("An error occurred. Please try again.");
-      }
-    });
-  }
-
-  // ---------------------------
-  // Navbar border on scroll
-  // ---------------------------
-  const navbar = document.querySelector(".navbar");
-  window.addEventListener("scroll", () => {
-    if (navbar) {
-      navbar.style.borderBottomColor =
-        window.scrollY > 50
-          ? "rgba(102, 126, 234, 0.2)"
-          : "rgba(51, 65, 85, 0.3)";
+// Smooth scroll behavior for anchor links
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault()
+    const target = document.querySelector(this.getAttribute("href"))
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      })
     }
-  });
-
-  // ---------------------------
-  // Parallax effect on hero shapes
-  // ---------------------------
-  const shapes = document.querySelectorAll(".shape");
-  document.addEventListener("mousemove", (e) => {
-    const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
-    const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
-
-    shapes.forEach((shape, index) => {
-      shape.style.transform = `translate(${moveX * (index + 1)}px, ${
-        moveY * (index + 1)
-      }px)`;
-    });
-  });
-
-  // ---------------------------
-  // Button ripple effect
-  // ---------------------------
-  document.querySelectorAll(".btn").forEach((button) => {
-    button.addEventListener("click", function (e) {
-      const ripple = document.createElement("span");
-      const rect = this.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height);
-      const x = e.clientX - rect.left - size / 2;
-      const y = e.clientY - rect.top - size / 2;
-
-      ripple.style.width = ripple.style.height = size + "px";
-      ripple.style.left = x + "px";
-      ripple.style.top = y + "px";
-      ripple.classList.add("ripple");
-
-      this.appendChild(ripple);
-
-      setTimeout(() => ripple.remove(), 600);
-    });
-  });
-
-  // Inject ripple CSS dynamically
-  const style = document.createElement("style");
-  style.textContent = `
-    .btn { position: relative; overflow: hidden; }
-    .ripple {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.6);
-      transform: scale(0);
-      animation: rippleAnimation 0.6s ease-out;
-      pointer-events: none;
-    }
-    @keyframes rippleAnimation {
-      to { transform: scale(4); opacity: 0; }
-    }
-  `;
-  document.head.appendChild(style);
-
-  // ---------------------------
-  // Auto-hide preloader
-  // ---------------------------
-  const preloader = document.querySelector(".preloader");
-  if (preloader) {
-    setTimeout(() => {
-      preloader.style.opacity = "0";
-      preloader.style.visibility = "hidden";
-    }, 2000); // 2 seconds delay
-  }
-
-  console.log("QuickPOS landing page loaded successfully!");
-});
+  })
+})

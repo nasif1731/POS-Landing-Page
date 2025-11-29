@@ -58,6 +58,14 @@
                 <span></span>
                 <span></span>
             </div>
+            <div class="global-theme-toggle">
+            <span class="footer-theme-label" id="theme-label">Light Mode</span>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <div class="theme-toggle-circle">
+                    <i class="fas fa-sun theme-toggle-icon"></i>
+                    </div>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -87,7 +95,7 @@
                     <div class="shape shape-3"></div>
                 </div>
                 <div class="hero-mockup" data-tilt>
-                    <img src="assets/images/pos-dashboard.jpg" alt="POS Dashboard Mockup" class="mockup-image">
+                    <img src="assets/images/pos-dashboard.png" alt="POS Dashboard Mockup" class="mockup-image">
                 </div>
             </div>
         </div>
@@ -339,6 +347,8 @@
         </div>
     </section>
 
+
+
 <footer class="footer">
   <div class="footer-container">
     <div class="footer-brand">
@@ -365,6 +375,9 @@
     <p class="footer-copy">&copy; <span id="year"></span> SleekPOS. All rights reserved.</p>
   </div>
 </footer>
+
+
+
 
     
 <!-- Scripts -->
